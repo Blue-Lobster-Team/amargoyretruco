@@ -31,6 +31,8 @@ public class Hand {
             addCard(deck.drawCard());
         }
     }
+
+    // Envido Code
     public int envido() {
         int maxEnvido = 0;
         boolean envidoCheck = false;

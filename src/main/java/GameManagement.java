@@ -1,5 +1,7 @@
 package src.main.java;
 import src.main.java.Card.Card;
+import src.main.java.Card.Rank;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 public class GameManagement {
@@ -16,20 +18,20 @@ public class GameManagement {
         envidoPoints = 0;
     }
 
-    public void startGame(){
+    public void startGame() {
         System.out.println("Welcome to Bitter & Re-trick!");
 
         //GameLoop
 
-        while (true){
+        while (true) {
 
             //Game Starts
 
             System.out.println("---------------------------------------------------------");
-            System.out.println("Player 1"+player1.getPlayerName());
-            System.out.println("Score: "+player1.getScore());
-            System.out.println("Player 2"+player2.getPlayerName());
-            System.out.println("Score: "+player2.getScore());
+            System.out.println("Player 1: " + player1.getPlayerName());
+            System.out.println("Score: " + player1.getScore());
+            System.out.println("Player 2: " + player2.getPlayerName());
+            System.out.println("Score: " + player2.getScore());
             System.out.println("---------------------------------------------------------");
 
             envidoPoints = 0;
@@ -38,7 +40,7 @@ public class GameManagement {
 
             //Check for game end
 
-            if (player1.getScore() >= 15 || player2.getScore() >= 15){
+            if (player1.getScore() >= 15 || player2.getScore() >= 15) {
                 System.out.println("Game over !");
                 if (player1.getScore() > player2.getScore()) {
                     System.out.println(player1.getPlayerName() + " wins the game!");
@@ -49,6 +51,22 @@ public class GameManagement {
                 }
                 break;
             }
+            //Draw 3 cards
+
+            player1.getHand().drawHand(deck);
+            player2.getHand().drawHand(deck);
+            List<Card> player1Hand = player1.getHand().getCards();
+            System.out.println(player1Hand);
+            System.out.println("---------------------------------------------------------");
+            List<Card> player2Hand = player2.getHand().getCards();
+            System.out.println(player2Hand);
+            System.out.println("---------------------------------------------------------");
+
+            //Phase 1
+
+            // Reset Deck
+            deck.initializeDeck();
+            deck.shuffle();
 
             //Wait for user input to start next round
 
@@ -63,25 +81,7 @@ public class GameManagement {
                 return; // End the game by returning from the method
             }
 
-            //Draw 3 cards
-
-            player1.getHand().drawHand(deck);
-            player2.getHand().drawHand(deck);
-
-            List<Card> player1Hand = player1.getHand().getCards();
-
-            //Phase 1
-
-            // Reset Deck
-
-            deck.initializeDeck();
-            deck.shuffle();
-
         }
-
-    }
-
-    public void truco(){
 
     }
 }

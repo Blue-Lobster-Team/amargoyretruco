@@ -25,6 +25,9 @@ public class Card {
         this.rank = rank;
     }
 
+    public String toString(){
+        return rank.name() + " of " + suit.name();
+    }
 /*
     public String getImgPath(){
         String suitName = suit.name().toLowerCase();
