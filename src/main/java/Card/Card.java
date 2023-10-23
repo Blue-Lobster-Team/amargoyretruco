@@ -25,9 +25,12 @@ public class Card {
         this.rank = rank;
     }
 
-//    public String getImgPath(){
-//        String suitName = suit.name().toLowerCase();
-//        String rankName = rank.name().toLowerCase();
-//        return "src/main/resources/images/cards" + suitName + "_" + rankName + ".png";
-//    }
+/*
+    public String getImgPath(){
+        String suitName = suit.name().toLowerCase();
+        String rankName = rank.name().toLowerCase();
+        return "src/main/resources/images/cards" + suitName + "_" + rankName + ".png";
+    }
+*/
+
 }

@@ -10,7 +10,7 @@ public class truco_game {
         Hand hand = new Hand();
 
         // Add some cards to the hand
-        Card card1 = new Card(Suit.CUPS, Rank.SIX);
+        Card card1 = new Card(Suit.CLUBS, Rank.SIX);
         Card card2 = new Card(Suit.CUPS, Rank.SEVEN);
         Card card3 = new Card(Suit.COINS, Rank.KING);
 
@@ -18,8 +18,6 @@ public class truco_game {
         hand.addCard(card2);
         hand.addCard(card3);
 
-        // Call the envido method to calculate the envido score
-        hand.envido();
-
+        System.out.println(hand.envido());
     }
 }

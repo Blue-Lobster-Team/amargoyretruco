@@ -6,14 +6,15 @@ import java.util.List;
 public class Hand {
     private List<Card> cards;
 
-    public Hand(){
+    public Hand() {
         cards = new ArrayList<>();
     }
-    public void addCard(Card card){
+
+    public void addCard(Card card) {
         cards.add(card);
     }
 
-    public void removeCard(Card card){
+    public void removeCard(Card card) {
         cards.remove(card);
     }
 
@@ -21,43 +22,57 @@ public class Hand {
         return cards;
     }
 
-    public void clear(){
+    public void clear() {
         cards.clear();
     }
 
-    public void drawHand(Deck deck){
-        for (int i = 0; i < 3; i++){
+    public void drawHand(Deck deck) {
+        for (int i = 0; i < 3; i++) {
             addCard(deck.drawCard());
         }
     }
-
     public int envido() {
-        boolean hasSameSuit = false;
-        Card envidoCard1 = null;
-        Card envidoCard2 = null;
-        int envidoPoints = 0;
+        int maxEnvido = 0;
+        boolean envidoCheck = false;
 
         for (int i = 0; i < cards.size(); i++) {
-            Card card1 = cards.get(i);
             for (int j = i + 1; j < cards.size(); j++) {
+                Card card1 = cards.get(i);
                 Card card2 = cards.get(j);
+
                 if (card1.getSuit() == card2.getSuit()) {
-                    hasSameSuit = true;
-                    envidoCard1 = card1;
-                    envidoCard2 = card2;
-                    break;
+                    int envido = 20+(calculateEnvidoValue(card1) + calculateEnvidoValue(card2));
+                    maxEnvido = Math.max(maxEnvido, envido);
+                    envidoCheck = true;
                 }
             }
         }
 
-        if (hasSameSuit=true) {
-            int value1 = envidoCard1.getRank().getValue();
-            int value2 = envidoCard2.getRank().getValue();
-            envidoPoints = Math.abs(value1 - value2) + 20;
+        if (!envidoCheck) {
+            maxEnvido = calculateHighestValue();
         }
 
-        return envidoPoints;
+        return maxEnvido;
     }
 
+    private int calculateEnvidoValue(Card card) {
+        int value = card.getRank().getValue();
+        if (value == 10 || value >= 8) {
+            return 0;
+        } else {
+            return value;
+        }
+    }
 
+    private int calculateHighestValue() {
+        int highestValue = 0;
+
+        for (Card card : cards) {
+            int value = calculateEnvidoValue(card);
+            if (value > highestValue) {
+                highestValue = value;
+            }
+        }
+        return highestValue;
+    }
 }
