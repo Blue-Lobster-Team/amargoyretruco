@@ -16,5 +16,4 @@ public class ClubsCard extends Card {
         return super.trucoValue();
     }
 
-
 }
