@@ -1,4 +1,5 @@
 package src.Players;
+
 import src.Cards.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,10 +7,12 @@ import java.util.List;
 public class Player {
     private String name;
     private List<Card> hand;
+    private int score;
 
-    public Player(String name){
+    public Player(String name) {
         this.name = name;
         this.hand = new ArrayList<>();
+        this.score = 0;
     }
 
     public void drawCard(Deck deck) {
@@ -20,12 +23,24 @@ public class Player {
         Card card = deck.drawCard();
         if (card != null) {
             hand.add(card);
-            System.out.println("Card drawn: " + card);
         } else {
             System.out.println("Deck is empty");
         }
     }
-    public List<Card> getHand(){
-        return this.hand;
+    public String getName() {
+        return name;
+    }
+
+    public void updateScore(int points) {
+        score += points;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+
+    public List<Card> getHand() {
+        return hand;
     }
 }
