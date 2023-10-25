@@ -4,6 +4,7 @@ import src.Cards.Card;
 import src.Players.Player;
 import src.Cards.Deck;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameLoop {
@@ -36,9 +37,28 @@ public class GameLoop {
         Deck deck = new Deck();
         deck.shuffle();
 
+        player1.drawCards(deck);
+        player2.drawCards(deck);
+
+        for (Card card : player1.getHand()) {
+            System.out.println(card);
+        }
+        System.out.println();
+
+        player1.calculateEnvidoPoints();
+
+        System.out.println();
+
+        for (Card card : player2.getHand()) {
+            System.out.println(card);
+        }
+        System.out.println();
+
+        player2.calculateEnvidoPoints();
+
+        System.out.println();
+
         // Draw cards for each player
-        drawCards(player1, deck);
-        drawCards(player2, deck);
 
         // Game loop
         while (isRunning) {
@@ -63,6 +83,7 @@ public class GameLoop {
 
     private void update() {
         // Update game logic here
+
     }
 
     private void render() {
@@ -73,15 +94,4 @@ public class GameLoop {
         return false;
     }
 
-    private void drawCards(Player player, Deck deck) {
-        for (int i = 0; i < 3; i++) {
-            player.drawCard(deck);
-        }
-
-        System.out.println(player.getName() + " drew the following cards:");
-        for (Card card : player.getHand()) {
-            System.out.println(card);
-        }
-        System.out.println();
-    }
 }

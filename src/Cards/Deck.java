@@ -64,4 +64,12 @@ public class Deck {
         }
         return cards.remove(cards.size() - 1);
     }
+
+    public void removeCard(List<Card> cardstoRemove){
+        cards.remove(cardstoRemove);
+    }
+
+    public Card[] getCards() {
+        return cards.toArray(new Card[0]);
+    }
 }

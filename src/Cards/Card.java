@@ -10,6 +10,14 @@ public abstract class Card {
         this.suit = suit;
     }
 
+    public String getSuit() {
+        if(suit instanceof Suit){
+            return ((Suit) suit).toString();
+        }
+        return null;
+    }
+
+
     public enum Rank {
         ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, SOTA, HORSE, KING
     }
@@ -67,6 +75,8 @@ public abstract class Card {
         }
         return envidoValue();
     }
+
+
 
     @Override
     public String toString() {
