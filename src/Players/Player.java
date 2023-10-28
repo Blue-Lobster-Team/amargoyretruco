@@ -7,6 +7,27 @@ import java.util.Map;
 
 public class Player {
     private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setHand(List<Card> hand) {
+        this.hand = hand;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getNumCards() {
+        return numCards;
+    }
+
+    public void setNumCards(int numCards) {
+        this.numCards = numCards;
+    }
+
     private List<Card> hand;
     private int score;
     int numCards = 3;
@@ -70,7 +91,6 @@ public class Player {
             // Check if all three cards have the same suit
             if (card1.getSuit().equals(card2.getSuit()) && card2.getSuit().equals(card3.getSuit())) {
                 hasThreeSameSuit = true;
-                System.out.println("All three cards are from the same suit");
             }
         }
 
@@ -113,4 +133,5 @@ public class Player {
         System.out.println("Envido Points: " + envidoPoints);
         return envidoPoints;
     }
+
 }

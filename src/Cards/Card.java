@@ -80,7 +80,7 @@ public abstract class Card {
 
     @Override
     public String toString() {
-        return rank + " of " + suit + " (Truco: " + trucoValue() + ", Envido: " + envidoValue() + ")";
+        return "\n" + rank + " of " + suit;
     }
 
 }
